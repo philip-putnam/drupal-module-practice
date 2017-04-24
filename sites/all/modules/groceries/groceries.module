@@ -1,12 +1,16 @@
 <?php
     function groceries_menu () {
         $items = array();
-        $items['grocery_list'] = array(
-            'title' => "Get my grocery list",
-            'page callback' => 'get_list',
-            'access callback' => TRUE,
-            'type' => MENU_NORMAL_ITEM,
-        );
+        $groc_names = array('grocery_list', 'another_list', 'yet_another');
+
+        foreach ($groc_names as $groc_name) {
+            $items[$groc_name] = array(
+                'title' => $groc_name,
+                'page callback' => 'get_list',
+                'access callback' => TRUE,
+                'type' => MENU_NORMAL_ITEM,
+            );
+        }
         return $items;
     }
 
