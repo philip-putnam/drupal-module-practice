@@ -1,0 +1,25 @@
+<?php
+    function groceries_menu () {
+        $items = array();
+        $items['grocery_list'] = array(
+            'title' => "Get my grocery list",
+            'page callback' => 'get_list',
+            'access callback' => TRUE,
+            'type' => MENU_NORMAL_ITEM,
+        );
+        return $items;
+    }
+
+    function get_list() {
+        $groceries = array('eggs' => array('price' => 2.99, 'quantity' => 1), 'hamburger' => array('price' => 5.99, 'quantity' => 4));
+        $grocery_output = '<p>Your Grocery List:</p><ul>';
+        $bill_total = 0;
+        foreach($groceries as $key => $value) {
+            $grocery_output .= '<li>' . $key . ' price: $' . $value["price"] . ' quantity: ' . $value["quantity"] . 'total = $' . $value["price"] * $value["quantity"] . '</li>';
+            $bill_total += $value["price"] * $value["quantity"];
+        };
+        $grocery_output .= '</ul>';
+        $grocery_output .= '<h2> Your total bill will be $' . $bill_total;
+
+        return $grocery_output;
+    }

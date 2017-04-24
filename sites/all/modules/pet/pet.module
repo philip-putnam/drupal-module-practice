@@ -1,0 +1,20 @@
+<?php
+
+function pet_menu() {
+    $items['pet'] = array (
+        'title' => "Favorite Pet",
+        'page callback' => 'pet_display',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function pet_display() {
+    return '
+    <p>Corgi</p>
+    <img id="corgi" src="sites/all/modules/pet/corgi.jpg">
+    <a href="https://www.espn.com">Espn</a>
+    ';
+
+}
